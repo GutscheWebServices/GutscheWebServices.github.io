@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gutsche Web Services - Professionelle Computerhilfe und IT-Support für Privat und Geschäft"
+    />
+    <meta name="theme-color" content="#1a73e8" />
+
+    <title>Gutsche Web Services</title>
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="favicon/favicon-96x96.png"
+    />
+    <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #111;
+        background-color: #fff;
+      }
+
+      /* Header & Navigation */
+      header {
+        background: #111; /* dark gray / nearly black */
+        color: #fff;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-width: 0;
+      }
+
+      /* Brand link: wraps logo and text and links to site root */
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .brand:hover { cursor: pointer; }
+
+      /* Ensure no underline and consistent spacing in brand */
+      .brand { text-decoration: none; }
+      .brand .logo-text { display: flex; flex-direction: column; gap: 0.125rem; }
+      .brand .logo-text h1, .brand .logo-text p { text-decoration: none; margin: 0; }
+
+      .logo-section img {
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+        filter: grayscale(100%);
+        display: block;
+      }
+
+      .logo-badge {
+        background: transparent;
+        padding: 6px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-text h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .logo-text p {
+        font-size: 0.8rem;
+        opacity: 0.85;
+        margin-top: 0.1rem;
+        color: #ddd;
+      }
+
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: #f7f7f7; /* soft light gray */
+        color: #111;
+        padding: 4rem 1.5rem;
+        text-align: center;
+        min-height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-content {
+        max-width: 760px;
+      }
+
+      .hero h2 {
+        font-size: 2.4rem;
+        margin-bottom: 0.6rem;
+        font-weight: 700;
+        line-height: 1.15;
+        color: #111;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Minimalistic buttons */
+      .btn {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          background-color 120ms ease,
+          color 120ms ease,
+          transform 120ms ease;
+        cursor: pointer;
+        border: 1px solid transparent;
+        background: transparent;
+        color: #111;
+      }
+
+      .btn-primary {
+        border-color: #111;
+        color: #111;
+        background: transparent;
+        padding: 0.55rem 0.85rem;
+      }
+
+      .btn-primary:hover {
+        background: #111;
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        color: #666;
+        border-color: #ddd;
+        background: transparent;
+        padding: 0.55rem 0.85rem;
+      }
+
+      .btn-secondary:hover {
+        background: #eaeaea;
+        color: #111;
+        transform: translateY(-1px);
+      }
+
+      /* Services Section */
+      .services {
+        padding: 3.5rem 1.5rem;
+        background: #fff;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 1.9rem;
+        margin-bottom: 2.25rem;
+        color: #111;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-card {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #e6e6e6;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        transition:
+          transform 150ms ease,
+          box-shadow 150ms ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+
+      .service-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        display: block;
+        color: #111;
+      }
+
+      .service-card h3 {
+        font-size: 1.12rem;
+        margin-bottom: 0.5rem;
+        color: #111;
+      }
+
+      .service-card p {
+        color: #666;
+        line-height: 1.5;
+        font-size: 0.96rem;
+      }
+
+      /* Why Choose Us Section */
+      .why-choose {
+        padding: 3.5rem 1.5rem;
+        background: #fafafa;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .feature {
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .feature-number {
+        font-size: 1.8rem;
+        color: #111;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .feature h4 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+        color: #111;
+      }
+
+      .feature p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: #fff;
+        color: #111;
+        padding: 2.25rem 1.5rem;
+        text-align: center;
+        border-radius: 6px;
+        margin: 3rem 0;
+        border: 1px solid #f0f0f0;
+      }
+
+      .cta-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .cta-section p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #444;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 3.5rem 1.5rem;
+        background: #fff;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .contact-item {
+        text-align: center;
+      }
+
+      .contact-item h4 {
+        color: #111;
+        margin-bottom: 0.5rem;
+        font-size: 1.02rem;
+      }
+
+      .contact-item p {
+        color: #666;
+      }
+
+      .contact-item a {
+        color: #111;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 140ms ease;
+      }
+
+      .contact-item a:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #0d0d0d;
+        color: #bbb;
+        text-align: center;
+        padding: 1.75rem;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+
+      footer a {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .logo-text h1 {
+          font-size: 1.25rem;
+        }
+
+        .hero h2 {
+          font-size: 1.6rem;
+        }
+
+        .hero p {
+          font-size: 0.98rem;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="logo-section">
+          <a class="brand" href="/">
+            <span class="logo-badge"><img src="favicon.png" alt="Gutsche Web Services Logo"/></span>
+            <div class="logo-text">
+              <h1>Gutsche Web Services</h1>
+              <p>Professionelle Computerhilfe</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Ihre zuverlässige IT-Lösung</h2>
+        <p>
+          Schnelle und professionelle Hilfe bei Computerproblemen, Wartung und
+          Optimierung – für Privatpersonen und Unternehmen.
+        </p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+          <a href="#services" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title">Unsere Leistungen</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon">🛠️</span>
+            <h3>Vor-Ort Support</h3>
+            <p>
+              Schnelle Fehlerbehebung und Reparatur bei Ihnen vor Ort oder
+              remote – je nachdem, was Sie brauchen.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🔒</span>
+            <h3>Sicherheit & Wartung</h3>
+            <p>
+              Schutz vor Malware, regelmäßige Updates und Optimierung für
+              sichere und stabile Systeme.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">💾</span>
+            <h3>Daten & Backup</h3>
+            <p>
+              Sichern Sie Ihre wertvollen Daten mit zuverlässigen Backup- und
+              Wiederherstellungslösungen.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">📱</span>
+            <h3>Netzwerk & WLAN</h3>
+            <p>
+              Installation, Konfiguration und Fehlersuche für stabile
+              Internetverbindungen in Haus und Büro.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🖥️</span>
+            <h3>Hardware Beratung</h3>
+            <p>
+              Professionelle Beratung bei Anschaffung und Aufrüstung von
+              Computern und Zubehör.
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">⚡</span>
+            <h3>Schnelle Fehlerbehebung</h3>
+            <p>
+              Zuverlässige Lösung für Abstürze, Freeze, Langsamkeit und andere
+              alltägliche Computerprobleme.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+      <div class="container">
+        <h2 class="section-title">Warum Gutsche Web Services?</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-number">⚡</div>
+            <h4>Schnelle Reaktion</h4>
+            <p>Kurzfristige Termine und schnelle Lösungen für Ihre Probleme.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-number">👨‍💻</div>
+            <h4>Erfahrung</h4>
+            <p>
+              Jahre von Fachwissen und Lösungskompetenz bei verschiedensten
+              Systemen.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-number">💬</div>
+            <h4>Verständlich Erklärt</h4>
+            <p>
+              Wir erklären komplexe Probleme in verständlicher Sprache – ohne
+              Fachjargon.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-number">✓</div>
+            <h4>Zuverlässig</h4>
+            <p>
+              Faire Preise und langfristige Kundenzufriedenheit stehen bei uns
+              im Fokus.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container">
+      <div class="cta-section">
+        <h3>Bereit für schnelle Hilfe?</h3>
+        <p>
+          Kontaktieren Sie uns noch heute und lassen Sie Ihre Computerprobleme
+          von Profis lösen.
+        </p>
+        <a href="mailto:ws@gutscheweb.com" class="btn btn-primary"
+          >Kontakt aufnehmen</a
+        >
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Kontakt</h2>
+        <div class="contact-content">
+          <div class="contact-item">
+            <h4>📞 Telefon</h4>
+            <p>
+              <a href="tel:+49">+49 175 8850024</a>
+            </p>
+            <p>Montag - Freitag: 9:00 - 18:00 Uhr</p>
+          </div>
+          <div class="contact-item">
+            <h4>📧 Email</h4>
+            <p>
+              <a href="mailto:ws@gutscheweb.com">ws@gutscheweb.com</a>
+            </p>
+            <p>Wir antworten innerhalb von 24 Stunden</p>
+          </div>
+          <div class="contact-item">
+            <h4>📍 Standort</h4>
+            <p>Bad Vilbel & Umkreis</p>
+            <p>Persönliche Vor-Ort-Besuche möglich</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Gutsche Web Services. Alle Rechte vorbehalten.</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem">
+        <a href="impressum.html">Impressum</a> | 
+        <a href="datenschutz.html">Datenschutz</a>
+      </p>
+    </footer>
+  </body>
+</html>
